@@ -1,45 +1,114 @@
-function getComputerChroice(){
 
-let choice = Math.floor((Math.random() * 3) + 1);
+//alert("Una inteligencia artificial intenta destruir a la humanidad, gana en este juego a vida o muerte para salvar el destino de la humanidad")
+// player choice until line 18
+let playerPlays = "";
 
-if(choice == 1){
-    return `Computer plays rock`
-}else if(choice == 2){
-    return `Computer plays paper`
-}else{
-    return `Computer plays scrissors`
+const buttonRock = document.getElementById("rock");
+buttonRock.addEventListener("click", () =>{
+  playerPlays = "rock";
+  round();
+  
+})
+const buttonPaper = document.getElementById("paper");
+buttonPaper.addEventListener("click", () =>{
+  playerPlays = "paper";
+  round();
+})
+const buttonScissors = document.getElementById("scissors");
+buttonScissors.addEventListener("click", () =>{
+  playerPlays = "scissors";
+  round();
+})
+// player Choice finish
+
+
+// computer choice
+const options = ['rock', 'paper', 'scissors'];
+
+let computerChoice = "";
+
+function getComputerChoice() {
+  computerChoice = options[Math.floor(Math.random() * options.length)];
+}
+
+// compare choices
+let winner = "";
+
+function checkWinner(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    winner = 'tie';
+  } else if (
+    (playerChoice === 'rock' && computerChoice === 'scissors') ||
+    (playerChoice === 'paper' && computerChoice === 'rock') ||
+    (playerChoice === 'scissors' && computerChoice === 'paper')
+  ) {
+    winner = 'player';
+  } else {
+    winner = 'computer';
+  }
 }
 
 
+
+
+function round() {
+  getComputerChoice();
+  checkWinner(playerPlays, computerChoice);
+  let result = winner;
+
+  if (result === 'tie') {
+    logdiv.textContent = logdiv.textContent = `You play ${playerPlays} vs computer plays ${computerChoice}, it's a tie!.`;
+  } else if (result === 'player') {
+    logdiv.textContent = `You play ${playerPlays} vs computer plays ${computerChoice}, you win the round!`;
+  } else {
+    logdiv.textContent = `You play ${playerPlays} vs computer plays ${computerChoice}, computer wins the round!`;
+  }
+  
+  game();
 }
 
+let userScore = 0;
+let computerScore = 0;
 
+function game() {
+  if (winner === 'player') {
+    userScore++;
+    scoreCount.innerHTML = `User score = ${userScore} </br>Computer score = ${computerScore}`;
 
-function playRound(playerSelection, ComputerSelection){
-    computerSelection = getComputerChroice();
+  } else if (winner === 'computer') {
+    computerScore++;
+    scoreCount.innerHTML = `User score = ${userScore} </br>Computer score = ${computerScore}`;
+
+  }
+
+  console.log(`Score: Player ${userScore}, Computer ${computerScore}`);
+
+  if (userScore === 5) {
+    alert('Game over, you win!');
+    buttonRock.disabled = true;
+    buttonPaper.disabled = true;
+    buttonScissors.disabled = true;
+  } else if (computerScore === 5) {
+    alert('Game over, you lose!');
+    buttonRock.disabled = true;
+    buttonPaper.disabled = true;
+    buttonScissors.disabled = true;
+  
    
-
-    playerSelection.toLowerCase();
-
-
-if(playerSelection == `rock` && ComputerSelection == 1 || 
-    playerSelection == `paper`  && ComputerSelection == 2 ||
-    playerSelection == `scrissors` && ComputerSelection == 3){
-        return `It's a tie!`;
-    } else if (playerSelection == `rock` && ComputerSelection == 2){
-        return `Computer wins, paper beats rock`;
-    }else if(playerSelection == `rock` && ComputerSelection == 3){
-        return `Player wins, rock beats scissors`;
-    }else if(playerSelection == `paper` && ComputerSelection == 1){
-        return `Player wins, paper beats rock`;
-    }else if (playerSelection == `paper` && ComputerSelection == 3){
-        return `Computer wins, scissors beats paper`;
-    }else if (playerSelection == `scissors` && ComputerSelection == 1){
-        return `Computer wins, rock beats scissors`;
-    }else if(playerSelection == `scissors` && ComputerSelection == 2){
-        return `Player wins, scissors beats paper`;
-    }
+  }
+  
 }
 
 
-console.log(playRound(playerChoice, computerSelection));
+
+//dom log
+const logdiv = document.getElementById("log");
+logdiv.textContent = "Start the game by pressing one of the three options"
+
+
+
+//dom Count
+const scoreCount = document.getElementById("score");
+scoreCount.innerHTML = `User score = ${userScore} <br>Computer score = ${computerScore}`;
+
+

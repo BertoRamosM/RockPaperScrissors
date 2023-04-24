@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{border: solid red 1px;}
 body{
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
@@ -9,6 +11,7 @@ body{
     background-color: darkblue;
     align-items: center;
     justify-content: center;
+    color: whitesmoke;
 }
 
 .title{
@@ -20,8 +23,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-   width: 100%;
+   width: 60%;
    height: 100%;
+   background-color: rgba(28, 45, 200, 0.4);
+   
+
    
    
 }
@@ -32,6 +38,8 @@ body{
     align-items: center;
     justify-content: space-between;
     gap: 120px;
+    
+   
     
     
 }
@@ -44,6 +52,12 @@ body{
     margin-top: -30px;
     margin-bottom: -15px;;
     border: solid 10px #60a7e2;
+    border-radius: 20%;
+    
+}
+
+.grp-button > button{
+    border-radius: 70%;
 }
 
 .result{
@@ -54,16 +68,26 @@ body{
     font-size: larger;
     height: 100%;
     width: 100%;
+    padding-top: 50px;
+
+
 
 }
 
 #score, #log{
+    
     font-size: 36px;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-    
+    max-width: 320px;
+   height: 150px;
 }
 
 #log{
     min-width: 1000px;
+    display: flex;
+    
 }
+
+
+
