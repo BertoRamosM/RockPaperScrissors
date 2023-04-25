@@ -6,6 +6,7 @@ let playerPlays = "";
 const buttonRock = document.getElementById("rock");
 buttonRock.addEventListener("click", () =>{
   playerPlays = "rock";
+ 
   round();
   
 })
@@ -57,7 +58,7 @@ function round() {
   let result = winner;
 
   if (result === 'tie') {
-    logdiv.textContent = logdiv.textContent = `You play ${playerPlays} vs computer plays ${computerChoice}, it's a tie!.`;
+    logdiv.textContent = `You play ${playerPlays} vs computer plays ${computerChoice}, it's a tie!.`;
   } else if (result === 'player') {
     logdiv.textContent = `You play ${playerPlays} vs computer plays ${computerChoice}, you win the round!`;
   } else {
@@ -103,12 +104,10 @@ function game() {
 
 //dom log
 const logdiv = document.getElementById("log");
-logdiv.textContent = "Start the game by pressing one of the three options"
 
 
 
 //dom Count
 const scoreCount = document.getElementById("score");
 scoreCount.innerHTML = `User score = ${userScore} <br>Computer score = ${computerScore}`;
-
 
