@@ -62,25 +62,27 @@ body{
 
 .result{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     color: whitesmoke;
     font-size: larger;
     height: 100%;
     width: 100%;
-    padding-top: 50px;
-
+    padding-top: 25px;
+    padding-right: 200px;
+padding-bottom: 10px;
 
 
 }
 
 #score, #log{
     
-    font-size: 36px;
+    font-size: 32px;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-    max-width: 320px;
+    max-width: 300px;
    height: 150px;
+  
    
 }
 
@@ -92,10 +94,21 @@ body{
 }
 
 
-.userHand, .compHand{
+#userHand, #compHand{
     border-radius: 90%;
     background-color: bisque;
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
+    border: solid 5px #60a7e2;
+}
+
+
+.names{
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
 
 }
